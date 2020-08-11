@@ -20,7 +20,10 @@ public class Planet : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player")
         {
-            Destroy(collision.gameObject);
+            if (collision.gameObject.TryGetComponent(out ShipEffect effect))
+            {
+                effect.PlayDeath();
+            }
         }
     }
 }

@@ -59,6 +59,7 @@ public class RandomPlacement : MonoBehaviour
     [ContextMenu("Load")]
     public void LoadGame()
     {
+        Time.timeScale = 1;
         //check if the save file exists could use this above to prompt
         if (File.Exists(Application.persistentDataPath + "/typeName.save"))
         {
@@ -83,6 +84,7 @@ public class RandomPlacement : MonoBehaviour
     //Randomly generate the location
     public void RandomGeneration()
     {
+        Time.timeScale = 1;
         //Temp variables
         Vector3 NewLocation;
         bool isInside;
