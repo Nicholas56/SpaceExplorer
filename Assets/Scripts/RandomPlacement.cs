@@ -22,8 +22,7 @@ public class RandomPlacement : MonoBehaviour
             objectsToPlace[i] = transform.GetChild(i).gameObject;
         }
         //stop time so player can decide.
-        Time.timeScale = 0;
-        
+        Time.timeScale = 0;       
     }
 
     SaveGame SavePositions()
@@ -53,13 +52,12 @@ public class RandomPlacement : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/typeName.save", jsonString);
 
         Debug.Log("Saving as JSON: " + jsonString + Application.persistentDataPath + "/typeName.save");
-
     }
 
     [ContextMenu("Load")]
     public void LoadGame()
     {
-        Time.timeScale = 1;
+       Time.timeScale = 1;
         //check if the save file exists could use this above to prompt
         if (File.Exists(Application.persistentDataPath + "/typeName.save"))
         {
@@ -69,15 +67,16 @@ public class RandomPlacement : MonoBehaviour
             SaveGame save = JsonUtility.FromJson<SaveGame>(jsonString);
 
             Debug.Log("Loading as JSON: " + jsonString);
-
+            
             //loop round the objects and put them back into place
             for (int i = 0; i < objectsToPlace.Length; i++)
             {
-                Vector3 position = new Vector3(save.objPosX[i], save.objPosY[i], save.objPosZ[i]);
+
+                Vector3 position = new Vector3(save.objPosX[i], save.objPosY[i], save.objPosZ[i]);               
                 objectsToPlace[i].transform.position = position;
             }
 
-            Debug.Log("Game Loaded");
+            Debug.Log(gameObject.name+" Game Loaded");
         }
     }
 

@@ -46,7 +46,6 @@ public class dreamloLeaderBoard : MonoBehaviour {
 		Debug.LogWarning("dreamlo may require https for WEBGL / IOS / ANDROID builds.");
 #endif
 		}
-        Debug.Log("private " + privateCode);
 
 		this.highScores = "";
 	}

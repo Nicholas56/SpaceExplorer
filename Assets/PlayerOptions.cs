@@ -43,4 +43,9 @@ public class PlayerOptions : MonoBehaviour
         backgroundMusic.Play();
     }
 
+    public void showHideOptions(GameObject panel)
+    {
+        panel.SetActive(!panel.activeInHierarchy);
+    }
+
 }
