@@ -113,11 +113,12 @@ public class RandomPlacement : MonoBehaviour
 
 
 
+            /**
             while (isInside)
             {
                 NewLocation = (Random.insideUnitSphere * bounds);
                 isInside = Physics.CheckSphere(NewLocation, objectToPlace.transform.GetComponent<SphereCollider>().radius);
-            }
+            }*/
             objectToPlace.transform.position = NewLocation;
 
         }
