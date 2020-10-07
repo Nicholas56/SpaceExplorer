@@ -7,9 +7,8 @@ using UnityEngine;
 public class SaveGame
 {
     //the objects positions, we cannot use Vector3s directly as these are complex types
-    public List<float> objPosX = new List<float>();
-    public List<float> objPosY = new List<float>();
-    public List<float> objPosZ = new List<float>();
+    public List<Vector3> objPos = new List<Vector3>();
+    public List<Quaternion> objRot = new List<Quaternion>();
 
     //Creates a copy of this class from a given JSON string and returns it
     public static SaveGame CreateFromJSON(string jsonString)

@@ -32,9 +32,8 @@ public class RandomPlacement : MonoBehaviour
         //loop round all the objects to grab their x,y,z positions, you could extend this easily for rotation
         for (int i = 0; i < objectsToPlace.Length; i++)
         {
-            save.objPosX.Add(objectsToPlace[i].transform.position.x);
-            save.objPosY.Add(objectsToPlace[i].transform.position.y);
-            save.objPosZ.Add(objectsToPlace[i].transform.position.z);
+            save.objPos.Add(objectsToPlace[i].transform.position);
+            save.objRot.Add(objectsToPlace[i].transform.rotation);
         }
         //return back the save data to wherever this code is called
         return save;
@@ -49,9 +48,9 @@ public class RandomPlacement : MonoBehaviour
         string jsonString = JsonUtility.ToJson(save);
         //this uses the built in file handling to create a text file persistentDataPath means 
         //we always have the same path and are guaranteed a space to save 
-        File.WriteAllText(Application.persistentDataPath + "/typeName.save", jsonString);
+        File.WriteAllText(Application.persistentDataPath + "/" + typeName + ".save", jsonString);
 
-        Debug.Log("Saving as JSON: " + jsonString + Application.persistentDataPath + "/typeName.save");
+        Debug.Log("Saving as JSON: " + jsonString + Application.persistentDataPath + "/" + typeName + ".save");
     }
 
     [ContextMenu("Load")]
@@ -59,10 +58,10 @@ public class RandomPlacement : MonoBehaviour
     {
        Time.timeScale = 1;
         //check if the save file exists could use this above to prompt
-        if (File.Exists(Application.persistentDataPath + "/typeName.save"))
+        if (File.Exists(Application.persistentDataPath + "/" + typeName + ".save"))
         {
             //find the file and load it into memory
-            string jsonString = File.ReadAllText(Application.persistentDataPath + "/typeName.save");
+            string jsonString = File.ReadAllText(Application.persistentDataPath + "/" + typeName + ".save");
             //use the JSONUtility to convert back from JSON to string
             SaveGame save = JsonUtility.FromJson<SaveGame>(jsonString);
 
@@ -72,8 +71,10 @@ public class RandomPlacement : MonoBehaviour
             for (int i = 0; i < objectsToPlace.Length; i++)
             {
 
-                Vector3 position = new Vector3(save.objPosX[i], save.objPosY[i], save.objPosZ[i]);               
+                Vector3 position = save.objPos[i];
+                Quaternion rot = save.objRot[i];
                 objectsToPlace[i].transform.position = position;
+                objectsToPlace[i].transform.rotation = rot;
             }
 
             Debug.Log(gameObject.name+" Game Loaded");
