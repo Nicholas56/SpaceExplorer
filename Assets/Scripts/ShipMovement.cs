@@ -25,6 +25,6 @@ public class ShipMovement : MonoBehaviour
         Quaternion.Euler(new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"))* Time.deltaTime * 40);
 
         rb.MoveRotation(rb.rotation * deltaRotation);
-        rb.velocity = -transform.up*speed;
+        rb.velocity = transform.forward*speed;
     }
 }
