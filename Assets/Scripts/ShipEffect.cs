@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShipEffect : MonoBehaviour
 {
     public ParticleSystem deathEffect;
+    public MeshRenderer mesh;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class ShipEffect : MonoBehaviour
     public void PlayDeath()
     {
         deathEffect.Play();
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        mesh.enabled = false;
         if(gameObject.tag=="Player")
         GameObject.Find("OptionsManager").GetComponent<ScoreManager>().gs = ScoreManager.gameState.enterscore;
     }

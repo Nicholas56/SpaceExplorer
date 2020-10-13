@@ -22,9 +22,11 @@ public class ShipMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Quaternion deltaRotation = 
-        Quaternion.Euler(new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal"))* Time.deltaTime * 40);
+        Quaternion.Euler(new Vector3(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"))* Time.deltaTime * 40);
 
         rb.MoveRotation(rb.rotation * deltaRotation);
         rb.velocity = transform.forward*speed;
+
+        if (Input.GetKeyDown(KeyCode.Space)) {rb.angularVelocity = Vector3.zero; }
     }
 }
