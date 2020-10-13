@@ -4880,6 +4880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
+  probe: {fileID: 660047392245691973, guid: 43c5554d76404ed47b476949282703cb, type: 3}
 --- !u!114 &6205191400523665934
 MonoBehaviour:
   m_ObjectHideFlags: 0
