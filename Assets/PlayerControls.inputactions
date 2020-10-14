@@ -28,6 +28,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeWeapon",
+                    "type": "Button",
+                    "id": "61a73aa6-007a-479e-bf87-f1652a019663",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -248,6 +256,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "066530de-17be-491f-aa71-41f3da6feac3",
+                    "path": "*/{Forward}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

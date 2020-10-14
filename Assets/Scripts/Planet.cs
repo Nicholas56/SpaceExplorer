@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] int health = 10;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,6 +15,11 @@ public class Planet : MonoBehaviour
             {
                 effect.PlayDeath();
             }
+        }
+
+        if (collision.gameObject.tag == "Projectile")
+        {
+            health--;
         }
     }
 }

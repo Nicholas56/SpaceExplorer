@@ -11,7 +11,8 @@ public class ShipMovement : MonoBehaviour
     PlayerControls controls;
 
     [SerializeField] GameObject probe;
-    GameObject currentProbe;
+    [SerializeField] GameObject missile;
+    GameObject currentProjectile;
 
     private void Awake()
     {
@@ -30,33 +31,38 @@ public class ShipMovement : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
-        Quaternion deltaRotation =
-            Quaternion.Euler(new Vector3(-value.Get<Vector2>().y, value.Get<Vector2>().x) * (Time.deltaTime * 10));
+        if (Input.GetButton("Jump"))
+        {
+            Quaternion deltaRotation =
+                Quaternion.Euler(new Vector3(-value.Get<Vector2>().y, value.Get<Vector2>().x) * (Time.deltaTime * 10));
 
-        rb.MoveRotation(rb.rotation * deltaRotation);
-
-        rb.velocity = transform.forward * speed;
+            rb.MoveRotation(rb.rotation * deltaRotation);
+        }
     } 
 
     public void OnFire(InputValue value)
     {
-        DestroyProbe();
-        GameObject newProbe = Instantiate(probe, transform.position - Vector3.down, transform.rotation);
-        newProbe.GetComponent<Rigidbody>().AddForce(transform.forward * 25, ForceMode.Impulse);
-
-        Invoke("DestroyProbe", 5f);
+        if (Input.GetButton("Jump"))
+        {
+            GameObject newProbe = Instantiate(currentProjectile, transform.position - Vector3.down, transform.rotation);
+            newProbe.GetComponent<Rigidbody>().AddForce(transform.forward * 25, ForceMode.Impulse);
+        }
     }
 
-    void DestroyProbe()
+    public void OnChangeWeapon(InputValue value)
     {
-        Destroy(currentProbe);
+        if (currentProjectile == probe) { currentProjectile = missile; } else { currentProjectile = probe; }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        currentProjectile = probe;
     }
+
+    public void SetProbe() { currentProjectile = probe; }
+    public void SetMissile() { currentProjectile = missile; }
 
     Vector2 inputMovement;
     bool currentInput = false;
@@ -71,7 +77,21 @@ public class ShipMovement : MonoBehaviour
         rb.MoveRotation(rb.rotation * deltaRotation);
         rb.velocity = transform.forward*speed;
         */
-        if (Input.GetKeyDown(KeyCode.Space)) {rb.angularVelocity = Vector3.zero; }
+
+        if (Input.GetButton("Jump"))
+        {
+            controls.Enable();
+            rb.velocity = transform.forward * speed;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            controls.Disable();
+            rb.velocity = Vector3.zero;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         
     }
 }

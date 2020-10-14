@@ -4881,6 +4881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 25
   probe: {fileID: 660047392245691973, guid: 43c5554d76404ed47b476949282703cb, type: 3}
+  missile: {fileID: 660047392245691973, guid: c81ec9edce1141840be59669c84416d1, type: 3}
 --- !u!114 &6205191400523665934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4923,6 +4924,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1702519335005693216}
+  - {fileID: 4930513800383005739}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9949,12 +9951,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6957994285317855248}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.2000003, y: 3.8, z: 0.49999988}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.5000002, y: 3.8, z: 1.2000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 9110147617528054336}
-  m_RootOrder: 2
+  m_Father: {fileID: 1702519335701186222}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1976052131148072615
 ParticleSystem:
@@ -14707,7 +14709,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9110147617528054336}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!108 &5459703095040291417
 Light:
@@ -14803,7 +14805,6 @@ Transform:
   m_Children:
   - {fileID: 451496926697890731}
   - {fileID: 4260006296902239562}
-  - {fileID: 4930513800383005739}
   - {fileID: 4992600649520215841}
   - {fileID: 7888676929635544528}
   m_Father: {fileID: 1702519335005693216}
@@ -27669,7 +27670,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9110147617528054336}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!108 &8864797650988181648
 Light:

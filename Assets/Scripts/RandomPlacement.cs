@@ -17,12 +17,12 @@ public class RandomPlacement : MonoBehaviour
     {
         //create a new array then loop through the child objects and add them to that array
         objectsToPlace = new GameObject[transform.childCount];
-        for (int i=0;i<transform.childCount;i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             objectsToPlace[i] = transform.GetChild(i).gameObject;
         }
         //stop time so player can decide.
-        Time.timeScale = 0;       
+        Time.timeScale = 0;
     }
 
     SaveGame SavePositions()
@@ -56,7 +56,6 @@ public class RandomPlacement : MonoBehaviour
     [ContextMenu("Load")]
     public void LoadGame()
     {
-       Time.timeScale = 1;
         //check if the save file exists could use this above to prompt
         if (File.Exists(Application.persistentDataPath + "/" + typeName + ".save"))
         {
@@ -66,7 +65,7 @@ public class RandomPlacement : MonoBehaviour
             SaveGame save = JsonUtility.FromJson<SaveGame>(jsonString);
 
             Debug.Log("Loading as JSON: " + jsonString);
-            
+
             //loop round the objects and put them back into place
             for (int i = 0; i < objectsToPlace.Length; i++)
             {
@@ -77,14 +76,13 @@ public class RandomPlacement : MonoBehaviour
                 objectsToPlace[i].transform.rotation = rot;
             }
 
-            Debug.Log(gameObject.name+" Game Loaded");
+            Debug.Log(gameObject.name + " Game Loaded");
         }
     }
 
     //Randomly generate the location
     public void RandomGeneration()
     {
-        Time.timeScale = 1;
         //Temp variables
         Vector3 NewLocation;
         bool isInside;
@@ -98,7 +96,7 @@ public class RandomPlacement : MonoBehaviour
         for (int i = 0; i < objectsToPlace.Length; i++)
         {
             objectToPlace = objectsToPlace[i];
-            NewLocation = (Random.insideUnitSphere)*bounds;
+            NewLocation = (Random.insideUnitSphere) * bounds;
             if (objectToPlace.transform.TryGetComponent(out SphereCollider sphereColl))
             {
                 isInside = Physics.CheckSphere(NewLocation, sphereColl.radius);

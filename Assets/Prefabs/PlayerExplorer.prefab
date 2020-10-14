@@ -17533,6 +17533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 25
   probe: {fileID: 660047392245691973, guid: 43c5554d76404ed47b476949282703cb, type: 3}
+  missile: {fileID: 660047392245691973, guid: c81ec9edce1141840be59669c84416d1, type: 3}
 --- !u!54 &6142218451089735196
 Rigidbody:
   m_ObjectHideFlags: 0
