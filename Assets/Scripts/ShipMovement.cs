@@ -52,6 +52,7 @@ public class ShipMovement : MonoBehaviour
     public void OnChangeWeapon(InputValue value)
     {
         if (currentProjectile == probe) { currentProjectile = missile; } else { currentProjectile = probe; }
+        Debug.Log(123);
     }
 
     // Start is called before the first frame update

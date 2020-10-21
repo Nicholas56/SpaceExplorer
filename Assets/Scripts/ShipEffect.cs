@@ -44,7 +44,10 @@ public class ShipEffect : MonoBehaviour
                 }
                 if (objectToCheck.transform.GetChild(i).TryGetComponent(out ParticleSystem particle))
                 {
-                    particle.Stop();
+                    if (transform.name != "DeathEffect")
+                    {
+                        particle.Stop();
+                    }
                 }
                 CheckChildren(objectToCheck.transform.GetChild(i).gameObject);
             }

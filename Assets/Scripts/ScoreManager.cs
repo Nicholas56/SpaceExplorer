@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//http://dreamlo.com/lb/c7-PJVrCLUSnZmaSQ7_fBQLEurtZpx6k-jeRqVeg2JGw
+//c7-PJVrCLUSnZmaSQ7_fBQLEurtZpx6k-jeRqVeg2JGw
+//5f902bb2eb371809c4962528
 public class ScoreManager : MonoBehaviour
 {
     public enum gameState
@@ -16,7 +19,7 @@ public class ScoreManager : MonoBehaviour
    public gameState gs;
     public GameObject scorePanel;
     public Text namesList;
-    public GameObject inputBox;
+    public InputField inputBox;
 
     // Reference to the dreamloLeaderboard prefab in the scene
     dreamloLeaderBoard dl;
@@ -71,10 +74,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void EnterScore(string name)
+    public void EnterScore()
     {
-        dl.AddScore(name, (int)Time.timeSinceLevelLoad);
+        ScoreCount count = FindObjectOfType<ScoreCount>();
+        dl.AddScore(inputBox.text, count.score);
         this.gs = gameState.leaderboard;
-        inputBox.SetActive(false);
+        inputBox.gameObject.SetActive(false);
     }
 }
